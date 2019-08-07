@@ -6,6 +6,9 @@ const app = express();
 // Conecta com o banco de dados
 connectDB();
 
+// Inicializa o Middleware
+app.use(express.json({ extended: false }));
+
 app.get("/", (req, res) =>
   res.json({ msg: "Bem vindo à API da aplicação PHONE LIST" })
 );
