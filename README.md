@@ -3,7 +3,7 @@
 
 ![Build Status][build-development]
 
-Uma Aplicação alternativa ao google Contacts. O gerenciador de contatos **Phone List** permite que os usuários mantenham uma lista de contatos na web de forma segura e usando tudo de mais moderno em tenologia de desenvolvimento de aplicações. 
+Uma Aplicação alternativa ao google Contacts. O gerenciador de contatos **Phone List** permite que os usuários mantenham uma lista de contatos na web de forma segura e usando tudo de mais moderno em tecnologia de desenvolvimento de aplicações. 
 
 ![](header.png)
 
@@ -29,12 +29,6 @@ npm run dev     # Express & React :3000 & :5000
 npm run server  # Express API Only :5000
 npm run client  # React Client Only :3000
 ```
-
-## Histórico de Lançamentos
-
-* 0.0.1
-    * Trabalho em Progresso
-
 ## Meta
 
 Thiago Moura – [Thiagotec.com](https://thiagotec.com) – thmoura14@gmail.com
