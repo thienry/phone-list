@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://thiagotec:thienry@phone-list-niptw.mongodb.net/test?retryWrites=true&w=majority"
+}
