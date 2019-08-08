@@ -1,8 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ContactContext from "../../context/contact/contactContext";
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
+  const { addContact, updateContact, current, clearCurrent } = contactContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setContact(current);
+    } else {
+      setContact({
+        name: "",
+        email: "",
+        phone: "",
+        type: "pessoal"
+      });
+    }
+  }, [contactContext, current]);
 
   const [contact, setContact] = useState({
     name: "",
@@ -18,7 +32,15 @@ const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    contactContext.addContact(contact);
+
+    if (current === null) {
+      addContact(contact);
+    } else {
+      updateContact(contact);
+    }
+
+    clearAll();
+
     setContact({
       name: "",
       email: "",
@@ -26,10 +48,16 @@ const ContactForm = () => {
       type: "pessoal"
     });
   };
-  
+
+  const clearAll = () => {
+    clearCurrent();
+  };
+
   return (
     <form onSubmit={onSubmit}>
-      <h2 className="text-primary">Adicionar Contato</h2>
+      <h2 className="text-primary">
+        {current ? "Editar Contato" : "Adicionar Contato"}
+      </h2>
       <input
         type="text"
         placeholder="Nome"
@@ -69,7 +97,17 @@ const ContactForm = () => {
       />{" "}
       Profissional{" "}
       <div>
-        <input type="submit" value="Salvar" className="btn btn-primary" />
+        <input
+          type="submit"
+          value={current ? "Editar" : "Salvar"}
+          className="btn btn-primary"
+        />
+
+        {current && (
+          <button className="btn btn-light " onClick={clearAll}>
+            Limpar
+          </button>
+        )}
       </div>
     </form>
   );
