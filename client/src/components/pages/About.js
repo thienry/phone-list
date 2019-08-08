@@ -4,12 +4,12 @@ import dayjs from "dayjs";
 const About = () => {
   return (
     <Fragment>
-      <section class="container">
+      <section className="container">
         <h1 className="about-app">Sobre este App</h1>
-        <p class="lead">
+        <p className="lead">
           <strong>Phone List</strong> É Uma Aplicação alternativa ao google Contacts. O gerenciador de contatos Phone List permite que os usuários mantenham uma lista de contatos na web de forma segura e usando tudo de mais moderno em tecnologia de desenvolvimento de aplicações.
         </p>
-        <p class="lead">
+        <p className="lead">
           É concedida permissão, gratuitamente, a qualquer pessoa que obtenha
           uma cópia deste software e dos arquivos de documentação associados (o
           "Software"), para lidar com o Software sem restrições, incluindo, sem
@@ -18,11 +18,11 @@ const About = () => {
           que as pessoas a quem o Software é fornecido o façam, sujeitas às
           seguintes condições:
         </p>
-        <p class="lead">
+        <p className="lead">
           O aviso de copyright acima e este aviso de permissão devem ser
           incluídos em todas as cópias ou partes substanciais do Software.
         </p>
-        <p class="lead">
+        <p className="lead">
           O SOFTWARE É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA", SEM NENHUM TIPO
           DE GARANTIA, EXPRESSA OU IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS
           GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM FIM ESPECÍFICO E NÃO
@@ -32,9 +32,9 @@ const About = () => {
           CONTRATO, DELITO OU DE OUTRA FORMA, DECORRENTES DE, OU EM CONEXÃO COM
           O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO PROGRAMAS.
         </p>
-        <p class="lead">MIT license</p>
-        <p class="lead">Versão: 1.0.0</p>
-        <p class="lead">
+        <p className="lead">MIT license</p>
+        <p className="lead">Versão: 1.0.0</p>
+        <p className="lead">
           Copyright {dayjs().year()} &copy;
           <a
             href="http://thiagotec.com"
