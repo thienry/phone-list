@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import AlertContext from "../../context/alert/alertContext";
 
 const Register = ({ icon, title }) => {
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -17,7 +21,14 @@ const Register = ({ icon, title }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log("Envio do cadastro!");
+
+    if (name === "" || email === "" || password === "") {
+      setAlert("Por Favor insira os dados.", "danger");
+    } else if (password !== confirmPassword) {
+      setAlert("Senhas não podem ser diferentes.", "danger");
+    } else {
+      console.log("Envio do cadastro!");
+    }
   };
 
   return (
@@ -25,17 +36,19 @@ const Register = ({ icon, title }) => {
       <div>
         <h1>
           <i className={icon} /> <span className="text-primary">{title}</span>
-          <p className="lead" style={{ textAlign: "center" }}>Cadastro</p>
+          <p className="lead" style={{ textAlign: "center" }}>
+            Cadastro
+          </p>
         </h1>
       </div>
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="name">Nome: </label>
-          <input type="text" name="name" value={name} onChange={onChange} />
+          <input type="text" name="name" value={name} onChange={onChange} required />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email: </label>
-          <input type="email" name="email" value={email} onChange={onChange} />
+          <input type="email" name="email" value={email} onChange={onChange}  />
         </div>
         <div className="form-group">
           <label htmlFor="password">Senha: </label>
@@ -44,6 +57,8 @@ const Register = ({ icon, title }) => {
             name="password"
             value={password}
             onChange={onChange}
+            required
+            minLength="6"
           />
         </div>
         <div className="form-group">
@@ -53,6 +68,8 @@ const Register = ({ icon, title }) => {
             name="confirmPassword"
             value={confirmPassword}
             onChange={onChange}
+            required
+            minLength="6"
           />
         </div>
         <h5 style={{ float: "right", marginBottom: "15px" }}>
