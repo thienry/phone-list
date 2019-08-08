@@ -26,7 +26,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: "Phone List",
+  title: "PhoneList",
   icon: "fas fa-id-card-alt"
 };
 
