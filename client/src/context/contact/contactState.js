@@ -42,31 +42,28 @@ const ContactState = props => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   // Adiciona o contato
-
+  const addContact = contact => {
+    contact.id = uuid.v4();
+    dispatch({ type: ADD_CONTACT, payload: contact });
+  };
 
   // Apaga o contato
 
-
   // Seta o contato atual
-
 
   // Limpa o contato atual
 
-  
   // Atualiza o contato
-
 
   // Filtra os contatos
 
-
   // Limpa o filtro
 
-
   return (
-    <ContactContext.Provider value={{ contacts: state.contacts }}>
-      { props.children }
+    <ContactContext.Provider value={{ contacts: state.contacts, addContact }}>
+      {props.children}
     </ContactContext.Provider>
-  )
+  );
 };
 
 export default ContactState;
