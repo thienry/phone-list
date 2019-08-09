@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import axios from "axios";
 
+import config from "../../utils/config";
+
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
 import setAuthToken from "../../utils/setAuthToken";
@@ -44,12 +46,6 @@ const AuthState = props => {
 
   // Registra o  usuário
   const register = async formData => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-
     try {
       const res = await axios.post(
         "http://localhost:5000/api/users",
@@ -67,12 +63,6 @@ const AuthState = props => {
 
   // Loga o usuário
   const login = async formData => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-
     try {
       const res = await axios.post(
         "http://localhost:5000/api/auth",
