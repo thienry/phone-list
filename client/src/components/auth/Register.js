@@ -52,7 +52,7 @@ const Register = (props, { icon, title }) => {
       <div>
         <h1>
           <i className={icon} /> <span className="text-primary">{title}</span>
-          <p className="lead" style={{ textAlign: "center" }}>
+          <p className="lead-form" style={{ textAlign: "center" }}>
             Cadastro
           </p>
         </h1>
