@@ -11,6 +11,9 @@ import Alerts from "./components/layout/Alerts";
 import ContactState from "./context/contact/contactState";
 import AuthState from "./context/auth/authState";
 import AlertState from "./context/alert/alertState";
+import setAuthToken from "./utils/setAuthToken";
+
+if (localStorage.token) setAuthToken(localStorage.token);
 
 function App() {
   return (

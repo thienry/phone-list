@@ -4,19 +4,23 @@ import { Link } from "react-router-dom";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 
-const Register = ({ icon, title }) => {
+const Register = (props, { icon, title }) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
 
   const { setAlert } = alertContext;
-  const { register, error, clearErrors } = authContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
+    if (isAuthenticated) props.history.push("/");
+
     if (error === "Usuário já existente") {
       setAlert(error, "danger");
       clearErrors();
     }
-  }, [error]);
+
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     name: "",
