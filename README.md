@@ -5,7 +5,7 @@
 
 Uma Aplicação alternativa ao google Contacts. O gerenciador de contatos **Phone List** permite que os usuários mantenham uma lista de contatos na web de forma segura e usando tudo de mais moderno em tecnologia de desenvolvimento de aplicações. 
 
-![](header.png)
+![PhoneList app](./assets/phone-list.jpg)
 
 ## Instalação
 
