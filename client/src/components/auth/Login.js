@@ -1,7 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Login = ({ icon, title }) => {
+import AuthContext from "../../context/auth/authContext";
+import AlertContext from "../../context/alert/alertContext";
+
+const Login = (props, { icon, title }) => {
+  const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) props.history.push("/");
+
+    if (error === "Usuário ou senha errada!") {
+      setAlert(error, "danger");
+      clearErrors();
+    }
+
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
+
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -15,7 +35,12 @@ const Login = ({ icon, title }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log("Envio do Login!");
+
+    if (email === "" || password === "") {
+      setAlert("Por Favor preencha todos os campos", "danger");
+    } else {
+      login({ email, password });
+    }
   };
 
   return (
