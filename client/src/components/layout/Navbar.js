@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ title, icon }) => {
+import AuthContext from "../../context/auth/authContext";
+
+const Navbar = ({ title, icon, iconLogout }) => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, logout, user } = authContext;
+  
+  const onLogout = () => {
+    logout()
+  }
+
+  const authLinks = (
+    <>
+      <li style={{ color: "white" }}>Olá {user && user.name}</li>
+      <li>
+        <a href="#!" onClick={onLogout}>
+          <i className={iconLogout} /> <span className="hide-sm">Sair</span>
+        </a>
+      </li>
+    </>
+  );
+
+  const guestLinks = (
+    <>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+    </>
+  );
+
   return (
     <div className="navbar">
       <h1>
         <i className={icon} /> {title}
       </h1>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">Sobre</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+        {isAuthenticated ? authLinks : guestLinks}
       </ul>
     </div>
   );
@@ -30,7 +50,8 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   title: "PhoneList",
-  icon: "fas fa-id-card-alt"
+  icon: "fas fa-id-card-alt",
+  iconLogout: "fas fa-sign-out-alt"
 };
 
 export default Navbar;
