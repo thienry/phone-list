@@ -31,7 +31,7 @@ const ContactState = props => {
   // Get Contatos
   const getContacts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/contacts");
+      const res = await axios.get("/api/contacts");
 
       dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (err) {
@@ -43,7 +43,7 @@ const ContactState = props => {
   const addContact = async contact => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/contacts",
+        "/api/contacts",
         contact,
         config
       );
@@ -58,7 +58,7 @@ const ContactState = props => {
   const updateContact = async contact => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/contacts/${contact._id}`,
+        `/api/contacts/${contact._id}`,
         contact,
         config
       );
@@ -72,7 +72,7 @@ const ContactState = props => {
   // Apaga o contato
   const deleteContact = async id => {
     try {
-      await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+      await axios.delete(`/api/contacts/${id}`);
 
       dispatch({ type: DELETE_CONTACT, payload: id });
     } catch (err) {

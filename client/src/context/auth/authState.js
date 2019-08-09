@@ -36,7 +36,7 @@ const AuthState = props => {
     if (localStorage.token) setAuthToken(localStorage.token);
 
     try {
-      const res = await axios.get("http://localhost:5000/api/auth");
+      const res = await axios.get("/api/auth");
 
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (err) {
@@ -48,7 +48,7 @@ const AuthState = props => {
   const register = async formData => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/users",
+        "/api/users",
         formData,
         config
       );
@@ -65,7 +65,7 @@ const AuthState = props => {
   const login = async formData => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth",
+        "/api/auth",
         formData,
         config
       );
