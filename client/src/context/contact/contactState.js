@@ -54,6 +54,21 @@ const ContactState = props => {
     }
   };
 
+  // Atualiza o contato
+  const updateContact = async contact => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/contacts/${contact._id}`,
+        contact,
+        config
+      );
+
+      dispatch({ type: UPDATE_CONTACT, payload: res.data });
+    } catch (err) {
+      dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
+    }
+  };
+
   // Apaga o contato
   const deleteContact = async id => {
     try {
@@ -78,11 +93,6 @@ const ContactState = props => {
   // Limpa o contato atual
   const clearCurrent = contact => {
     dispatch({ type: CLEAR_CURRENT });
-  };
-
-  // Atualiza o contato
-  const updateContact = contact => {
-    dispatch({ type: UPDATE_CONTACT, payload: contact });
   };
 
   // Filtra os contatos
