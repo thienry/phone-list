@@ -7,10 +7,10 @@ import AuthContext from "../../context/auth/authContext";
 const Navbar = ({ title, icon, iconLogout }) => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, logout, user } = authContext;
-  
+
   const onLogout = () => {
-    logout()
-  }
+    logout();
+  };
 
   const authLinks = (
     <>
@@ -36,16 +36,15 @@ const Navbar = ({ title, icon, iconLogout }) => {
       <h1>
         <i className={icon} /> {title}
       </h1>
-      <ul>
-        {isAuthenticated ? authLinks : guestLinks}
-      </ul>
+      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );
 };
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  iconLogout: PropTypes.string
 };
 
 Navbar.defaultProps = {
