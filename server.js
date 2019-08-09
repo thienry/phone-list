@@ -1,10 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const connectDB = require("./config/db");
 
 const app = express();
 
 // Conecta com o banco de dados
 connectDB();
+
+//Inicializa o CORS na API
+app.use(cors());
 
 // Inicializa o Middleware
 app.use(express.json({ extended: false }));

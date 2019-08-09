@@ -1,10 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import AlertContext from "../../context/alert/alertContext";
+import AuthContext from "../../context/auth/authContext";
 
 const Register = ({ icon, title }) => {
   const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+
   const { setAlert } = alertContext;
+  const { register, error, clearErrors } = authContext;
+
+  useEffect(() => {
+    if (error === "Usuário já existente") {
+      setAlert(error, "danger");
+      clearErrors();
+    }
+  }, [error]);
 
   const [user, setUser] = useState({
     name: "",
@@ -27,7 +39,7 @@ const Register = ({ icon, title }) => {
     } else if (password !== confirmPassword) {
       setAlert("Senhas não podem ser diferentes.", "danger");
     } else {
-      console.log("Envio do cadastro!");
+      register({ name, email, password });
     }
   };
 
@@ -44,11 +56,17 @@ const Register = ({ icon, title }) => {
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="name">Nome: </label>
-          <input type="text" name="name" value={name} onChange={onChange} required />
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={onChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email: </label>
-          <input type="email" name="email" value={email} onChange={onChange}  />
+          <input type="email" name="email" value={email} onChange={onChange} />
         </div>
         <div className="form-group">
           <label htmlFor="password">Senha: </label>
