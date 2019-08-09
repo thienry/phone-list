@@ -1,8 +1,6 @@
 # Phone List
 > Full stack MERN app Gerenciador de contatos com React hooks, context & Autenticação JWT.
 
-![Build Status][build-development]
-
 Uma Aplicação alternativa ao google Contacts. O gerenciador de contatos **Phone List** permite que os usuários mantenham uma lista de contatos na web de forma segura e usando tudo de mais moderno em tecnologia de desenvolvimento de aplicações. 
 
 ![PhoneList app](./assets/phone-list.jpg)
